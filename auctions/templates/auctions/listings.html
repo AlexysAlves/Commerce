@@ -1,0 +1,82 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+    {% if message %}
+        {% if update %}
+            <div class="alert alert-primary">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endif %}
+<div class="listing-details">
+    {% if info.url %}
+        <img src="{{ info.url }}" alt="{{ info.title }}">
+    {% endif %}
+    <p>{{ info.description }}</p>
+    <p class="price">Current Price: ${{ info.current_bid }}</p>
+    
+        <div class="actions">
+            {% if owner and info.active %}
+                <form method="post" action="{% url 'close_auction' info.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Close Auction</button>
+                </form>
+            {% endif %}
+            
+            {% if not owner and info.active %}
+                {% if watchlist %}
+                <form method="post" action="{% url 'remove_watchlist' info.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">
+                        Remove from Watchlist
+                    </button>
+                </form>
+                {% else %}
+                <form method="post" action="{% url 'add_watchlist' info.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">
+                        Add to Watchlist
+                    </button>
+                </form>
+                {% endif %}
+                <form method="post" action="{% url 'place_bid' info.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="bid">Place Bid</label>
+                        <input type="number" id="bid" name="bid" class="form-control" step="0.01" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Place Bid</button>
+                </form>
+            {% endif %}
+        </div>
+        
+        {% if not info.active and user == info.current_bid.user_bid %}
+            <p class="winner">Congratulations! You have won this auction.</p>
+        {% endif %}
+        
+        <div class="comments-section">
+            <h2>Comments</h2>
+            <form method="post" action="{% url 'create_comment' info.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="comment">Add a Comment</label>
+                    <textarea id="comment" name="comment" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary">Add Comment</button>
+            </form>
+            <div class="comments">
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

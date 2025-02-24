@@ -1,0 +1,161 @@
+body {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+}
+
+.listings-container {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.listing {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    overflow: hidden;
+    width: 300px;
+}
+
+.listing h2 {
+    background-color: #007bff;
+    color: #fff;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.listing-details {
+    padding: 1rem;
+}
+
+.listing-details img {
+    display: block;
+    margin: 0 auto 1rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.listing-details p {
+    margin: 0 0 1rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    user-select: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.comment-date {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.comments .comment:last-child {
+    border-bottom: none;
+}
+
+.comments .comment {
+    padding: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.comments-section {
+    margin-top: 2rem;
+}
+
+.comments-section h2 {
+    margin-bottom: 1rem;
+}
+
+.winner {
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 1rem;
+}
+
+.watchlist-container {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
